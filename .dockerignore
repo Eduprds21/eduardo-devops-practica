@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+.git
+.gitignore
+.venv
+venv/
+.pytest_cache/
+.DS_Store
+tests/
+
+# Extras: nada de esto hace falta dentro de la imagen
+.env
+.env.*
+*.md
+*.zip
+Dockerfile
+.dockerignore
+docker-compose*.yml
+.github/
+src/Cliente_python/
+src/Frontend/
