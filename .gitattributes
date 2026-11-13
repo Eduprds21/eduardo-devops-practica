@@ -1,0 +1,2 @@
+# Normaliza los finales de línea a LF (necesario para Dockerfile y scripts en contenedores Linux)
+* text=auto eol=lf
