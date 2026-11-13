@@ -1,0 +1,20 @@
+# Levanta la API y el frontend:  docker compose up --build
+services:
+  api:
+    build: .
+    image: tienda-online-api:1.0
+    environment:
+      UVICORN_PORT: "8000"
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  frontend:
+    build: ./src/Frontend
+    image: tienda-online-frontend:1.0
+    ports:
+      - "8080:80"
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped

@@ -24,6 +24,7 @@ la API (o el contenedor) se pierden.
 │   ├── Cliente_python/     Cliente con la librería requests (cliente_tienda.py)
 │   └── Frontend/           Página web (index.html, app.js, estilos.css)
 ├── Dockerfile              Imagen de la API (python:3.12-slim)
+├── docker-compose.yml      API + frontend (extra)
 ├── .dockerignore           Ficheros excluidos del contexto de build
 ├── requirements.txt        Dependencias con versiones fijadas
 └── README.md
@@ -149,6 +150,24 @@ docker tag tienda-online-api:1.0 ghcr.io/eduprds21/tienda-online-api:1.0
 docker login ghcr.io -u Eduprds21
 docker push ghcr.io/eduprds21/tienda-online-api:1.0                      # push
 ```
+
+## Extra: API + frontend con docker-compose
+
+`docker-compose.yml` levanta dos contenedores: `api` (FastAPI, puerto 8000) y `frontend` (nginx con la página de
+`src/Frontend`, puerto 8080). El frontend espera a que la API esté `healthy`.
+
+```bash
+docker compose up -d --build     # construir y arrancar ambos
+docker compose ps                # estado de los servicios
+docker compose down              # parar y borrar
+```
+
+- Frontend: <http://localhost:8080> (el campo **Servidor** apunta por defecto a `http://localhost:8000`).
+- API y documentación: <http://localhost:8000/docs>
+
+La comunicación es navegador -> API: la página se sirve desde el contenedor `frontend`, pero las peticiones
+`fetch` las hace el navegador a `http://localhost:8000` (la API tiene CORS abierto). Para usar la API de otro
+equipo basta con cambiar el campo **Servidor**.
 
 ## Flujo de trabajo con Git
 
