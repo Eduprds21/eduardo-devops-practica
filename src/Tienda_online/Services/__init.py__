@@ -1,0 +1,5 @@
+"""
+Archivo de compatibilidad con la estructura indicada en las instrucciones de la práctica.
+"""
+
+from .Tienda_service import TiendaService

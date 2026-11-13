@@ -1,0 +1,7 @@
+"""
+Archivo de compatibilidad con la estructura indicada en las instrucciones de la práctica.
+"""
+
+from .Producto import Producto, ProductoElectronico, ProductoRopa
+from .Usuario import Usuario, Cliente, Administrador
+from .Pedido import Pedido

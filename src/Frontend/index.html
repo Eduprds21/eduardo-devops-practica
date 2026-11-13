@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tienda Online</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header>
+    <h1>Tienda Online</h1>
+    <!-- Dirección de la API: se puede cambiar para probar con el equipo de otro compañero -->
+    <div class="servidor">
+      <label for="urlApi">Servidor:</label>
+      <input type="text" id="urlApi" value="http://localhost:8000">
+      <button id="botonConectar">Conectar</button>
+    </div>
+  </header>
+
+  <!-- Mensaje de éxito o de error de la última operación -->
+  <p id="mensaje" class="mensaje oculto"></p>
+
+  <main>
+    <section>
+      <h2>Productos</h2>
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Precio</th><th>Stock</th><th>Detalles</th><th></th></tr>
+        </thead>
+        <tbody id="tablaProductos"></tbody>
+      </table>
+
+      <h3>Crear producto</h3>
+      <form id="formProducto">
+        <select id="productoTipo">
+          <option value="generico">Genérico</option>
+          <option value="electronico">Electrónico</option>
+          <option value="ropa">Ropa</option>
+        </select>
+        <input type="text" id="productoNombre" placeholder="Nombre" required>
+        <input type="number" id="productoPrecio" placeholder="Precio (€)" step="0.01" min="0.01" required>
+        <input type="number" id="productoStock" placeholder="Stock" min="0" value="0" required>
+        <!-- Campos extra: solo se muestran según el tipo elegido -->
+        <input type="number" id="productoGarantia" class="campo-electronico oculto" placeholder="Meses de garantía" min="0">
+        <input type="text" id="productoTalla" class="campo-ropa oculto" placeholder="Talla">
+        <input type="text" id="productoColor" class="campo-ropa oculto" placeholder="Color">
+        <button type="submit">Crear producto</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Usuarios</h2>
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Nombre</th><th>Email</th><th>Rol</th></tr>
+        </thead>
+        <tbody id="tablaUsuarios"></tbody>
+      </table>
+
+      <h3>Crear usuario</h3>
+      <form id="formUsuario">
+        <select id="usuarioTipo">
+          <option value="cliente">Cliente</option>
+          <option value="administrador">Administrador</option>
+        </select>
+        <input type="text" id="usuarioNombre" placeholder="Nombre" required>
+        <input type="email" id="usuarioEmail" placeholder="Email" required>
+        <input type="text" id="usuarioDireccion" placeholder="Dirección postal">
+        <button type="submit">Crear usuario</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Crear pedido</h2>
+      <form id="formPedido">
+        <select id="pedidoCliente" required></select>
+        <select id="pedidoProducto"></select>
+        <input type="number" id="pedidoCantidad" min="1" value="1">
+        <button type="button" id="botonAnadirLinea">Añadir línea</button>
+      </form>
+      <ul id="lineasPedido"></ul>
+      <button type="button" id="botonEnviarPedido">Enviar pedido</button>
+    </section>
+
+    <section>
+      <h2>Pedidos de un usuario</h2>
+      <select id="consultaUsuario"></select>
+      <button type="button" id="botonConsultarPedidos">Consultar</button>
+      <div id="resultadoPedidos"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
