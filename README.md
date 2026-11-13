@@ -2,6 +2,7 @@
 
 - **Proyecto:** Tienda Online (API REST + cliente Python + frontend web)
 - **Autor:** Eduardo Paredes Agrelo
+- **Repositorio:** https://github.com/Eduprds21/Arquitectura-del-Software
 - **Asignatura:** Arquitectura del Software – Universidad Intercontinental de la Empresa (UIE)
 
 ## Descripción
@@ -133,8 +134,8 @@ Con el contenedor arrancado:
 La imagen está publicada en un registry; no hace falta clonar el repositorio para usarla:
 
 ```bash
-docker pull REGISTRY/USUARIO/tienda-online-api:1.0
-docker run --rm -p 8000:8000 REGISTRY/USUARIO/tienda-online-api:1.0
+docker pull ghcr.io/eduprds21/tienda-online-api:1.0
+docker run --rm -p 8000:8000 ghcr.io/eduprds21/tienda-online-api:1.0
 ```
 
 ### 6. Publicar la imagen (build → run → test → push)
@@ -144,9 +145,9 @@ docker build -t tienda-online-api:1.0 .
 docker run -d -p 8000:8000 --name tienda-api tienda-online-api:1.0      # run
 python src/Cliente_python/cliente_tienda.py http://localhost:8000       # test
 docker stop tienda-api
-docker tag tienda-online-api:1.0 REGISTRY/USUARIO/tienda-online-api:1.0
-docker login REGISTRY
-docker push REGISTRY/USUARIO/tienda-online-api:1.0                      # push
+docker tag tienda-online-api:1.0 ghcr.io/eduprds21/tienda-online-api:1.0
+docker login ghcr.io -u Eduprds21
+docker push ghcr.io/eduprds21/tienda-online-api:1.0                      # push
 ```
 
 ## Flujo de trabajo con Git
