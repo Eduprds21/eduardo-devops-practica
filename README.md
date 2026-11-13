@@ -2,7 +2,7 @@
 
 - **Proyecto:** Tienda Online (API REST + cliente Python + frontend web)
 - **Autor:** Eduardo Paredes Agrelo
-- **Repositorio:** https://github.com/Eduprds21/Arquitectura-del-Software
+- **Repositorio:** https://github.com/Eduprds21/eduardo-devops-practica
 - **Asignatura:** Arquitectura del Software – Universidad Intercontinental de la Empresa (UIE)
 
 ## Descripción
